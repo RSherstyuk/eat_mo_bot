@@ -39,6 +39,26 @@ public:
       inorderRec(node->right);
     }
   }
+
+  void printTree() { printTreeRec(root, 0); }
+
+  void printTreeRec(TreeNode *node, int space) {
+    if (node == nullptr) {
+      return;
+    }
+
+    space += 5;
+
+    printTreeRec(node->right, space);
+
+    std::cout << std::endl;
+    for (int i = 5; i < space; i++) {
+      std::cout << " ";
+    }
+    std::cout << node->val << "\n";
+
+    printTreeRec(node->left, space);
+  }
 };
 
 int main() {
@@ -54,6 +74,6 @@ int main() {
   std::cout << "Inorder traversal: ";
   tree.inorder();
   std::cout << std::endl;
-
+  tree.printTree();  
   return 0;
 }
